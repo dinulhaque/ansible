@@ -1,0 +1,13 @@
+---
+- hosts: switches
+  gather_facts: false
+  connection: network_cli
+  become: yes
+  become_method: enable
+
+  tasks:
+    - name: change hostname
+      ios_config:
+        lines:
+          - description - Config by Ansible
+        parents: interface GigabitEthernet1/0/48

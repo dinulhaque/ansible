@@ -1,0 +1,10 @@
+vcenter_user: vcenteraccount
+vcenter_pass: vcenteraccountpassword
+vcenter_hostname: vcenterDNSName
+esxhost: ESX host to put VM on
+datastore: DATASTORE_Name
+vmtemplate: VMTemplate
+notes: Ansible Test
+dumpfacts: False
+folder: Datacenter/vm
+datacenter: DataCenterName

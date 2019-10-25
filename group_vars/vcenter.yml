@@ -1,0 +1,10 @@
+---
+vcenter_user: vCenterAdminAccount
+vcenter_pass: vCenterAccountPassword
+vcenter_hostname: vCenterDNSName
+esxhost: ESXHostForVM
+datastore: DataStoreName
+vmtemplate: template
+dumpfacts: False
+folder: Datacenter/vm
+datacenter: DatacenterName

@@ -1,0 +1,19 @@
+---
+- hosts: windows
+  tasks:
+  - name: create log folder if not present
+    win_file:
+      path: c:\temp
+      state: directory
+
+  - name: delete log file if present
+    win_file:
+      path: c:\temp\updates.txt
+      state: absent
+
+  - name: Install all security, criticals without a scheduled task
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+      log_path: c:\temp\updates.txt

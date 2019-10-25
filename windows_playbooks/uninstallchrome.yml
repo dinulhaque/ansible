@@ -1,0 +1,8 @@
+---
+- hosts: windows
+
+  tasks:
+    - name: Uninstall Chrome
+      win_package:
+        product_id: '{6A6D3422-8127-3867-A83C-56B555636ECA}'
+        state: absent

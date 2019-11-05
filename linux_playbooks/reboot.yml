@@ -6,6 +6,7 @@
   hosts: "{{ Host }}"
   become: true
   become_user: root
+  gather_facts: false
   tasks:
    - name: Reboot
      reboot:

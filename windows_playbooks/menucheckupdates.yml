@@ -1,0 +1,21 @@
+---
+- vars_prompt:
+    - name: "hosts"
+      prompt: "Which Host"
+      private: no
+
+  hosts: "{{ hosts }}"
+  gather_facts: false
+  tasks:
+  - name: Check for missing updates
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
+        - Definition Updates
+        - Windows Defender
+      state: searched
+    register: found_update_count
+  - name: List missing updates
+    debug: var=found_update_count

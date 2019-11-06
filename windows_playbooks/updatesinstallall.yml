@@ -1,8 +1,5 @@
 ---
 - vars_prompt:
-    - name: "update"
-      prompt: "Which Update"
-      private: no
     - name: "host"
       prompt: "which host"
       private: no

@@ -1,0 +1,21 @@
+---
+- vars_prompt:
+    - name: "update"
+      prompt: "Which Update"
+      private: no
+    - name: "hosts"
+      prompt: "Which Hosts"
+      private: no
+  hosts: "{{ hosts }}"
+  gather_facts: false
+  tasks:
+  - name: create log folder if not present
+    win_updates:
+      category_names:
+      - Updates
+      - DefinitionUpdates
+      - WindowsDefender
+      - UpdateRollups
+      whitelist:
+      - "{{ update }}"
+      reboot: yes

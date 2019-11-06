@@ -6,9 +6,9 @@
   gather_facts: false
   hosts: "{{ host }}"
   tasks:
-    - name: more
+    - name: Get Uptime
       win_shell: (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime
       register: shell_result
-
-    - debug:
+    - name: List Uptime
+      debug:
         var: shell_result.stdout_lines

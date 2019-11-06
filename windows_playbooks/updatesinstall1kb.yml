@@ -9,7 +9,7 @@
   hosts: "{{ hosts }}"
   gather_facts: false
   tasks:
-  - name: create log folder if not present
+  - name: Install KB
     win_updates:
       category_names:
         - Updates

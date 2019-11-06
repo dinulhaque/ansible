@@ -10,6 +10,7 @@
   - name: Check for missing updates
     win_updates:
       category_names:
+        - Updates
         - SecurityUpdates
         - CriticalUpdates
         - UpdateRollups

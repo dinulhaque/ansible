@@ -3,15 +3,21 @@
     - name: "update"
       prompt: "Which Update"
       private: no
-  hosts: windows
+    - name: "host"
+      prompt: "which host"
+      private: no
+  hosts: "{{ host }}"
   gather_facts: false
   tasks:
-  - name: create log folder if not present
+  - name: Install All Updates
     win_updates:
       category_names:
       - Updates
+      - SecurityUpdates
+      - CriticalUpdates
+      - UpdateRollups
       - DefinitionUpdates
       - WindowsDefender
-      whitelist:
-      - "{{ update }}"
+      - Drivers
+      - Tools
       reboot: yes

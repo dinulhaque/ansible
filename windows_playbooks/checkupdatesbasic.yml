@@ -1,9 +1,0 @@
----
-- hosts: windows
-  gather_facts: false
-  tasks:
-  - name: Check for missing updates
-    win_updates: state=searched
-    register: update_count
-  - name: List missing updates
-    debug: var=update_count

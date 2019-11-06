@@ -1,0 +1,14 @@
+---
+- vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
+  gather_facts: false
+  hosts: "{{ host }}"
+  tasks:
+    - name: more
+      win_shell: (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines

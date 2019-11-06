@@ -12,10 +12,14 @@
   - name: create log folder if not present
     win_updates:
       category_names:
-      - Updates
-      - DefinitionUpdates
-      - WindowsDefender
-      - UpdateRollups
+        - Updates
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
+        - DefinitionUpdates
+        - WindowsDefender
+        - Drivers
+        - Tools
       whitelist:
       - "{{ update }}"
       reboot: yes

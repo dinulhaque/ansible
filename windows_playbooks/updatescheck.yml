@@ -21,4 +21,4 @@
       state: searched
     register: found_update_count
   - name: List missing updates
-    debug: var=found_update_count
+    debug: var=found_update_count.kb

@@ -1,0 +1,19 @@
+---
+- vars_prompt:
+    - name: "esx_host"
+      prompt: "Which ESX Host"
+      private: no
+  hosts: esx
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Add a VMware vSwitch
+    vmware_maintenancemode:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      esxi_hostname: "{{ esx_host }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost

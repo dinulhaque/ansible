@@ -1,0 +1,28 @@
+---
+- vars_prompt:
+    - name: "switch_name"
+      prompt: "Name of Switch"
+      private: no
+    - name: "portgroup_name"
+      prompt: "PortGroup Name"
+      private: no
+    - name: "vlan_id"
+      prompt: "vlan ID"
+      private: no
+  hosts: esx
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Add a VMware vSwitch
+    vmware_portgroup:
+      hostname: "{{ vcenter_name }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: "{{ cluster_name }}"
+      switch: "{{ switch_name }}"
+      portgroup: "{{ portgroup_name }}"
+      vlan_id: "{{ vlan_id }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost

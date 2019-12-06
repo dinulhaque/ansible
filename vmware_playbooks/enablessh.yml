@@ -1,0 +1,17 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Start ssh Service
+    vmware_host_service_manager:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: LAB
+      service_name: TSM-SSH
+      service_policy: on
+      state: present
+      validate_certs: False
+    delegate_to: localhost

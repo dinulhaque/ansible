@@ -1,0 +1,35 @@
+---
+- vars_prompt:
+    - name: "ntp_1"
+      prompt: "Name of NTP Server"
+      private: no
+    - name: "ntp_2"
+      prompt: "Name of NTP Server"
+      private: no
+  hosts: vcsa2
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Set NTP Servers
+    vmware_host_ntp:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: LAB
+      ntp_servers:
+          - "{{ ntp_1 }}"
+          - "{{ ntp_2 }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost
+  - name: Start ntpd Service
+    vmware_host_service_manager:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: LAB
+      service_name: ntpd
+      state: present
+      validate_certs: False
+    delegate_to: localhost

@@ -1,0 +1,15 @@
+---
+- hosts: setup
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Create Datacenter
+    vmware_datacenter:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      datacenter_name: "{{ datacenter_name }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost

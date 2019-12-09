@@ -1,0 +1,23 @@
+---
+- vars_prompt:
+    - name: "esxi_hostname"
+      prompt: "Which ESX Host"
+      private: no
+  hosts: setup
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Add Host to Cluster
+    vmware_host:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      datacenter_name: "{{ datacenter_name }}"
+      cluster: "{{ cluster_name }}"
+      esxi_hostname: "{{ esxi_hostname }}"
+      esxi_username: "{{ esxi_username }}"
+      esxi_password: "{{ esxi_password }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost

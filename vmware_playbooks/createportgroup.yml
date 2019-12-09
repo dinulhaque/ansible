@@ -16,7 +16,7 @@
   tasks:
   - name: Add a VMware vSwitch
     vmware_portgroup:
-      hostname: "{{ vcenter_name }}"
+      hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
       cluster_name: "{{ cluster_name }}"

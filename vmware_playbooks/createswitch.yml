@@ -1,6 +1,6 @@
 ---
 - vars_prompt:
-    - name: "esx_host"
+    - name: "esxi_hostname"
       prompt: "Which ESX Host"
       private: no
     - name: "switch_name"
@@ -16,7 +16,7 @@
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
-      esxi_hostname: "{{ esx_host }}"
+      esxi_hostname: "{{ esxi_hostname }}"
       switch: "{{ switch_name }}"
       mtu: 1500
       validate_certs: False

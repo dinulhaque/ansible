@@ -1,0 +1,58 @@
+---
+- hosts: setup
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Create Datacenter
+    vmware_datacenter:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      datacenter_name: "{{ datacenter_name }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost
+  - name: Create Cluster
+    vmware_cluster:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      datacenter_name: "{{ datacenter_name }}"
+      cluster_name: "{{ cluster_name }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost
+  - name: Set NTP Servers
+    vmware_host_ntp:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: "{{ cluster_name }}"
+      ntp_servers:
+          - "{{ ntp_servers }}"
+      validate_certs: False
+      state: present
+    delegate_to: localhost
+  - name: Start ntpd Service
+    vmware_host_service_manager:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name:
+      service_name: ntpd
+      service_policy: on
+      state: present
+      validate_certs: False
+    delegate_to: localhost
+  - name: Start ssh Service
+    vmware_host_service_manager:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      cluster_name: "{{ cluster_name }}"
+      service_name: TSM-SSH
+      service_policy: on
+      state: present
+      validate_certs: False
+    delegate_to: localhost

@@ -1,0 +1,22 @@
+---
+- vars_prompt:
+    - name: "esxi_hostname"
+      prompt: "Which ESX Host"
+      private: no
+  hosts: setup
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Configure DNS and Hostname
+    vmware_dns_config:
+      hostname: "{{ esxi_hostname }}"
+      username: "{{ esxi_username }}"
+      password: "{{ esxi_password }}"
+      change_hostname_to: "{{ esxi_hostname }}"
+      domainname: "{{ domainname }}"
+      dns_servers:
+          - "{{ dns_server1 }}"
+          - "{{ dns_server2 }}"
+      validate_certs: False
+    delegate_to: localhost

@@ -1,6 +1,6 @@
 ---
 - vars_prompt:
-    - name: "esx_host"
+    - name: "esxi_hostname"
       prompt: "Which ESX Host"
       private: no
   hosts: esx
@@ -13,7 +13,7 @@
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
-      esxi_hostname: "{{ esx_host }}"
+      esxi_hostname: "{{ esxi_hostname }}"
       validate_certs: False
       state: present
     delegate_to: localhost

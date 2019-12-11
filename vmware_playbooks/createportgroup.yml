@@ -9,9 +9,7 @@
     - name: "vlan_id"
       prompt: "vlan ID"
       private: no
-  hosts: esx
-  become: true
-  become_user: root
+  hosts: "{{ host }}"
   gather_facts: false
   tasks:
   - name: Add a VMware vSwitch

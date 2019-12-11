@@ -1,4 +1,3 @@
-# this is still is a work in process. IP does not seem to set
 ---
 # create a new VM from a template
 - vars_prompt:

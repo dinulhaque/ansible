@@ -1,5 +1,5 @@
 ---
-- hosts: customeresx
+- hosts: "{{ host }}"
   gather_facts: false
   tasks:
   - name: Add Host to Cluster

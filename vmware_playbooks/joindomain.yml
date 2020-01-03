@@ -1,0 +1,22 @@
+---
+# create a new VM from a template
+
+- hosts: "{{ host }}"
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: join domain
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: no
+        datacenter: "{[ datacenter }}"
+        cluster: "{{ cluster }}"
+        name: "{{ vm_name }}"
+        customization: 
+          domain: "{{ domain }}"
+          domainadmin: "{[ domainadmin }}"
+          domainadminpassword: "{{ domainadminpassword }}"
+          joindomain: yes
+          timezone: "{{ timezone }}"

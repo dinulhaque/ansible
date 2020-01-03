@@ -1,0 +1,20 @@
+---
+- vars_prompt:
+    - name: "esxi_hostname"
+      prompt: "Which ESX Host"
+      private: no
+  hosts: setup
+  become: true
+  become_user: root
+  gather_facts: false
+  tasks:
+  - name: Gather VMware Info
+    vmware_vm_info:
+      hostname: "{{ esxi_hostname }}"
+      username: "{{ esxi_username }}"
+      password: "{{ esxi_password }}"
+      validate_certs: False
+    delegate_to: localhost
+    register: vminfo
+  - debug:
+      var: vminfo.virtual_machines[2-4]

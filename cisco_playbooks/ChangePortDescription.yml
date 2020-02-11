@@ -14,3 +14,4 @@
     - name: save ios
       ios_config:
         save_when: modified
+      when: not ansible_check_mode

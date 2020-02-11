@@ -1,5 +1,5 @@
 ---
-- hosts: switches
+- hosts: "{{ host }}"
   gather_facts: false
   vars_files:
     - /etc/ansible/group_vars/vault.yml
@@ -9,3 +9,8 @@
         lines:
           - description - Config by Ansible
         parents: interface GigabitEthernet1/0/48
+      notify: "save ios"
+  handlers:
+    - name: save ios
+      ios_config:
+        save_when: modified

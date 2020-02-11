@@ -6,7 +6,7 @@
     - name: change IP
       ios_config:
         lines:
-          - hostname jeff
+          - hostname "{{ hostname }}"
       notify: "save ios"
   handlers:
     - name: save ios

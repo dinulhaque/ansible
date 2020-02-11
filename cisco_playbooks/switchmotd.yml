@@ -1,7 +1,9 @@
 ---
-- hosts: "{[ host }}"
+- hosts: "{{ host }}"
   gather_facts: false
   connection: local
+  vars_files:
+    - /etc/ansible/group_vars/vault.yml
   tasks:
   - name: add login banner
     ios_banner:
@@ -11,7 +13,5 @@
     notify: "save ios"
   handlers:
     - name: save ios
-      ios_command:
-        commands: "copy running-config startup-config"
-        timeout: 40
-      when: not ansible_check_mode
+      ios_config:
+        save_when: modified

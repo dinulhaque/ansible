@@ -1,7 +1,9 @@
 ---
-ansible_connection:  network_cli
+ansible_connection: network_cli
 ansible_network_os: ios
-ansible_user: admin
-ansible_ssh_pass: PASSWORD
-ansible_become_pass: PASSWORD
+ansible_user: "{{ username }}"
+ansible_ssh_pass: "{{ password }}"
+ansible_become: yes
+ansible_become_pass: "{{ password }}"
 ansible_become_method: enable
+text_for_motd: "message"

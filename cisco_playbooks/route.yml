@@ -1,0 +1,16 @@
+---
+- hosts: mdf
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: change IP
+      ios_config:
+        lines:
+          - hostname jeff
+      notify: "save ios"
+  handlers:
+    - name: save ios
+      ios_command:
+        commands: "write mem"
+        timeout: 40
+      when: not ansible_check_mode

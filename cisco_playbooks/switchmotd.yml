@@ -1,0 +1,17 @@
+---
+- hosts: "{[ host }}"
+  gather_facts: false
+  connection: local
+  tasks:
+  - name: add login banner
+    ios_banner:
+      banner: motd
+      text: "{{ text_for_motd }}"
+      state: present
+    notify: "save ios"
+  handlers:
+    - name: save ios
+      ios_command:
+        commands: "copy running-config startup-config"
+        timeout: 40
+      when: not ansible_check_mode

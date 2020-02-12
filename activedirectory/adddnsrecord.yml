@@ -1,0 +1,12 @@
+---
+- hosts: "{{ host }}"
+  gather_facts: false
+  tasks:
+  - name: Add DNS Record
+    win_dns_record:
+      computer_name: "{{ DNS_Server }}"
+      name: "{{ name }}"
+      type: A
+      value: "{{ value }}"
+      zone: "{{ zone }}"
+      state: present

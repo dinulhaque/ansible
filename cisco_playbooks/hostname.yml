@@ -3,7 +3,7 @@
   gather_facts: false
   connection: local
   vars_files:
-    - /etc/ansible/group_vars/vault.yml
+    - /etc/ansible/vault/vault.yml
   tasks:
     - name: change IP
       ios_config:

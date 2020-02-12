@@ -1,9 +1,14 @@
 ---
-- hosts: "{{ host }}"
+- vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
+  hosts: "{{ host }}"
   gather_facts: false
   connection: local
   vars_files:
-    - /etc/ansible/group_vars/vault.yml
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/switches.yml
   tasks:
   - name: Add MOTD Banner
     ios_banner:

@@ -1,5 +1,5 @@
-ansible_user: SPN@DOMAIN
-ansible_password: PASSWORD
+ansible_user: "{{ SPN@DOMAIN }}"
+ansible_password: "{{ PASSWORD }}"
 ansible_connection: winrm
 ansible_port: 5985
 ansible_winrm_transport: kerberos

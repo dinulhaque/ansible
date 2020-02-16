@@ -1,0 +1,15 @@
+---
+- hosts: winservers
+  gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/winservers.yml
+  tasks:
+  - name: Add DNS Record
+    win_dns_record:
+      computer_name: dc01.DOWNS.LAN
+      name: centosansible
+      type: A
+      value: 192.168.51.15
+      zone: downs.lan
+      state: present

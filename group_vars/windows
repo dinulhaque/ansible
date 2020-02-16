@@ -1,7 +1,0 @@
-ansible_user: SPN@DOMAIN.COM
-ansible_password: PASSWORD
-ansible_connection: winrm
-ansible_port: 5985
-ansible_winrm_transport: kerberos
-ansible_winrm_server_cert_validation: ignore
-ansible_become: false

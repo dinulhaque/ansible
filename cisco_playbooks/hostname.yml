@@ -4,6 +4,7 @@
   connection: local
   vars_files:
     - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/switches.yml
   tasks:
     - name: change IP
       ios_config:

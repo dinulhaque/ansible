@@ -42,6 +42,10 @@
     yum:
       name: svn
       state: latest
+  - name: Install VIM Enhanced
+    yum:
+      name: vim-enhanced
+      state: latest
   - name: Install pywinrm
     pip:
       name: pywinrm

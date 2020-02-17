@@ -1,5 +1,8 @@
 ---
 - vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
     - name: "ip_address"
       prompt: "IP of vMotion vmkernal Port"
       private: no
@@ -11,6 +14,9 @@
       private: no
   hosts: "{{ host }}"
   gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.yml
   tasks:
     delegate_to: localhost
 # Add vMotion IP address

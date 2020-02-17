@@ -1,9 +1,13 @@
 ---
-# create a new VM from a template
-
-- hosts: "{{ host }}"
+- vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
+  hosts: "{{ host }}"
   gather_facts: false
-  connection: local
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.yml
   tasks:
     - name: join domain
       vmware_guest:

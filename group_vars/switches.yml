@@ -2,9 +2,9 @@
 ansible_connection: network_cli
 ansible_network_os: ios
 ansible_user: admin
-ansible_ssh_pass: "{{ vault_ansible_ssh_pass }}"
+ansible_ssh_pass: "{{ vault_switch_ssh_pass }}"
 ansible_become: yes
-ansible_become_pass: "{{ vault_ansible_become_pass }}"
+ansible_become_pass: "{{ vault_switch_become_pass }}"
 ansible_become_method: enable
 text_for_motd: "{{ message }}"
 text_for_login: "{{  message }}"

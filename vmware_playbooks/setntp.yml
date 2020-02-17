@@ -1,12 +1,19 @@
 ---
-- hosts: "{{ host }}"
+- vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
+  hosts: "{{ host }}"
   gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.yml
   tasks:
   - name: Set NTP Servers
     vmware_host_ntp:
       hostname: "{{ vcenter_hostname }}"
       username: "{{ vcenter_username }}"
-      password: "{{ vcenter:password }}"
+      password: "{{ vcenter_password }}"
       cluster_name: "{{ cluster_name }}"
       ntp_servers:
           - "{{ ntp_servers }}"

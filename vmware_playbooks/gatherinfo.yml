@@ -1,12 +1,13 @@
 ---
 - vars_prompt:
-    - name: "esxi_hostname"
-      prompt: "Which ESX Host"
+    - name: "host"
+      prompt: "Which Host"
       private: no
-  hosts: setup
-  become: true
-  become_user: root
+  hosts: "{{ host }}"
   gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.yml
   tasks:
   - name: Gather VMware Info
     vmware_vm_info:

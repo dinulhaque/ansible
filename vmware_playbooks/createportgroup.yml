@@ -1,5 +1,14 @@
 ---
 - vars_prompt:
+    - name: "host"
+      prompt: "Which Host"
+      private: no
+  hosts: "{{ host }}"
+  gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.ym
+- vars_prompt:
     - name: "switch_name"
       prompt: "Name of Switch"
       private: no

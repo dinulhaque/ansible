@@ -14,4 +14,4 @@
     dellemc_get_firmware_inventory:
        idrac_ip:   "{{ IP or FQDN }}"
        idrac_user: "{{ idrac_user }}"
-       idrac_password: "{{ vault_idrac_password }}"
+       idrac_password: "{{ idrac_password }}"

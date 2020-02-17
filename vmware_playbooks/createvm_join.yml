@@ -16,7 +16,9 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  vars_files: /etc/ansible/group_vars/lan.yml
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/vmware.yml
   tasks:
     - name: Create VM from template
       vmware_guest:

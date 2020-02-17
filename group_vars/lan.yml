@@ -1,6 +1,6 @@
 ---
 vcenter_user: "{{ vcenter_user }}"
-vcenter_pass: "{{ vcenter_pass }}"
+vcenter_pass: "{{ vcenter_password }}"
 vcenter_hostname: "{{ vcenter_hostname }}"
 esxi_hostname: "{{ esxi_hostname }}"
 datastore: "{{ datastorename }}"

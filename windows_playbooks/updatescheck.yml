@@ -1,11 +1,13 @@
 ---
 - vars_prompt:
-    - name: "hosts"
+    - name: "host"
       prompt: "Which Host"
       private: no
-
-  hosts: "{{ hosts }}"
+  hosts: "{{ host }}"
   gather_facts: false
+  vars_files:
+    - /etc/ansible/vault/vault.yml
+    - /etc/ansible/group_vars/windows.yml
   tasks:
   - name: Check for missing updates
     win_updates:

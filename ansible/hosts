@@ -1,0 +1,5 @@
+[winservers]
+dc01.DOWNS.LAN
+
+[windesktops]
+win10.DOWNS.LAN

@@ -1,6 +1,7 @@
-ansible_user: "{{ SPN@DOMAIN }}"
-ansible_password: "{{ vault_ansible_admin_windows_password }}"
+---
 ansible_connection: winrm
-ansible_port: 5985
-ansible_winrm_transport: kerberos
 ansible_winrm_server_cert_validation: ignore
+ansible_user: aadmin@DOWNS.LAN
+ansible_password: "{{ ansible_windows_password }}"
+ansible_winrm_transport: kerberos
+ansible_port: 5985

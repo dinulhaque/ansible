@@ -21,6 +21,7 @@
         - Drivers
         - Tools
       state: searched
-    register: found_update_count
+    register: kb
   - name: List missing updates
-    debug: var=found_update_count.kb
+    debug:
+      var: kb.updates
